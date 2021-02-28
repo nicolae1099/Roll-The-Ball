@@ -1,0 +1,48 @@
+
+#Roll The Ball --- Nitu Nicolae-Iulian
+
+    Roll The Ball is a simple 2D game made after the famous game with the same
+name. The fundamentals of the project consists in search in state's space
+algorthms and work with data structures in Haskell. The game logic is implemented
+in 3 main modules (haskell files): RollTheBall, Search, AStarHeuristic, alongside
+other secundary modules made project consistency.
+
+    RollTheBall
+--> manages the move of pieces and level updates;
+--> 2 data structures: Cell {position, value} for storing every piece stats,
+Level {cells, lin, col} for storing the state (level) features like cells array,
+horizontal and veritical bounds;
+--> main functionalities: creates empty or filled levels, print them, add or
+move pieces on map, check connection between pieces, or validate the state
+(if it's a winning one), get next possible levels for a state (after moves are
+made).
+
+    Search
+--> implements the main search algorithm for solving the problem;
+--> 1 data structure used: Node {state, action, parent, depth, children} for
+storing a level stats at a certain moment (including previous and next levels,
+move that created the level, distance between it and initial state, etc.);
+--> main functionalities: creates initial state's space (lazy, so that the
+program can run even if not all states are created at a time), make bidirectional
+breadth first searches on states tree to find the path between the initial and
+final states, so that the game is solved.
+
+    AStarHeuristic
+--> give a better solution to the game by using non trivial heuristics to find
+the correct and unique (minimal) path between start and final;
+--> main functionalities: takes care of hashing cells and levels for using
+HashSet data structure on a level neighbours in state's space, obtain the
+heuristic value by traversing the states with bfs algorithm.
+
+    ProblemState
+--> make a linkage between RollTheBall and Search (levels vs states).
+
+    Pipes
+--> contains pipe types represented by chars.
+
+    RollLevels
+--> contains some levels to be solved (scrambled).
+
+    Interactive
+--> manages the interaction between user and program and offers a minimal
+graphic user interface.
